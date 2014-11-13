@@ -22,7 +22,7 @@ try {
 }
 http.createServer(function(req, res) {
 
-    setHeader(res, 'ciao', 'pippo', true, false);
+    setHeader(res, 'ciao', 'pippo', true);
     var a = setHeader(res, 'ciao', 'pippo2');
     // return false, pippo as cookie
     console.log(a);
