@@ -4,7 +4,7 @@
  * @module setheaders
  * @package setheaders
  * @subpackage main
- * @version 0.0.1
+ * @version 0.0.2
  * @author hex7c0 <hex7c0@gmail.com>
  * @copyright hex7c0 2014
  * @license GPLv3
@@ -26,6 +26,7 @@
  */
 function setHeader(res, name, value, protect, override) {
 
+    var low = name.toLowerCase();
     if (res._headers === undefined) {
         res._headers = {};
     }
@@ -36,19 +37,19 @@ function setHeader(res, name, value, protect, override) {
 
     res.setHeader(name, value);
 
-    var previous = Object.getOwnPropertyDescriptor(res._headers, name);
+    var previous = Object.getOwnPropertyDescriptor(res._headers, low);
     if (previous !== undefined && previous.configurable === false) {
         return false;
     }
 
     if (protect === true) {
-        Object.defineProperty(res._headers, name, {
-            enumerable: true,
+        Object.defineProperty(res._headers, low, {
             configurable: false,
+            enumerable: true,
             get: function() {
 
                 return value;
-            },
+            }
         });
     }
 
