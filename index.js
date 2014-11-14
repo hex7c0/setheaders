@@ -27,11 +27,9 @@
 function setHeader(res, name, value, protect, override) {
 
     var low = name.toLowerCase();
-    if (res._headers === undefined) {
-        res._headers = {};
-    }
 
-    if (override === false && res._headers[name] !== undefined) {
+    if (override === false
+            && (res._headers !== undefined && res._headers[name] !== undefined)) {
         return true;
     }
 
