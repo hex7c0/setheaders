@@ -26,31 +26,31 @@
  */
 function setHeader(res, name, value, protect, override) {
 
-    var low = name.toLowerCase();
+  var low = name.toLowerCase();
 
-    if (override === false
-            && (res._headers !== undefined && res._headers[name] !== undefined)) {
-        return true;
-    }
-
-    res.setHeader(name, value);
-
-    var previous = Object.getOwnPropertyDescriptor(res._headers, low);
-    if (previous !== undefined && previous.configurable === false) {
-        return false;
-    }
-
-    if (protect === true) {
-        Object.defineProperty(res._headers, low, {
-            configurable: false,
-            enumerable: true,
-            get: function() {
-
-                return value;
-            }
-        });
-    }
-
+  if (override === false
+      && (res._headers !== undefined && res._headers[name] !== undefined)) {
     return true;
+  }
+
+  res.setHeader(name, value);
+
+  var previous = Object.getOwnPropertyDescriptor(res._headers, low);
+  if (previous !== undefined && previous.configurable === false) {
+    return false;
+  }
+
+  if (protect === true) {
+    Object.defineProperty(res._headers, low, {
+      configurable: false,
+      enumerable: true,
+      get: function() {
+
+        return value;
+      }
+    });
+  }
+
+  return true;
 }
 module.exports = setHeader;
