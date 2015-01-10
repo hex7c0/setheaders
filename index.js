@@ -47,6 +47,10 @@ function setHeader(res, name, value, protect, override) {
       get: function() {
 
         return value;
+      },
+      set: function() {
+
+        return; // prevent set error
       }
     });
   }
