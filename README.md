@@ -1,8 +1,9 @@
 # [setheaders](http://supergiovane.tk/#/setheaders)
 
-[![NPM version](https://badge.fury.io/js/setheaders.svg)](http://badge.fury.io/js/setheaders)
-[![Build Status](https://travis-ci.org/hex7c0/setheaders.svg)](https://travis-ci.org/hex7c0/setheaders)
-[![Dependency Status](https://david-dm.org/hex7c0/setheaders/status.svg)](https://david-dm.org/hex7c0/setheaders)
+[![NPM version](https://img.shields.io/npm/v/setheaders.svg)](https://www.npmjs.com/package/setheaders)
+[![Linux Status](https://img.shields.io/travis/hex7c0/setheaders.svg?label=linux)](https://travis-ci.org/hex7c0/setheaders)
+[![Windows Status](https://img.shields.io/appveyor/ci/hex7c0/setheaders.svg?label=windows)](https://ci.appveyor.com/project/hex7c0/setheaders)
+[![Dependency Status](https://img.shields.io/david/hex7c0/setheaders.svg)](https://david-dm.org/hex7c0/setheaders)
 
 boilerplate for res.setHeader, protection from being overridden
 
@@ -39,6 +40,6 @@ setHeader(res,'X-Foo','pippo');
 
 ## Examples
 
-Take a look at my [examples](https://github.com/hex7c0/setheaders/tree/master/examples)
+Take a look at my [examples](examples)
 
-### [License GPLv3](http://opensource.org/licenses/GPL-3.0)
+### [License GPLv3](LICENSE)
