@@ -1,5 +1,5 @@
 {
-  "version": "0.0.3",
+  "version": "0.0.4",
   "name": "setheaders",
   "description": "boilerplate for res.setHeader, protection from being overridden",
   "keywords": [
@@ -33,7 +33,7 @@
   },
   "scripts": {
     "prepublish": "npm prune",
-    "test": "mocha --bail --check-leaks test/"
+    "test": "mocha --bail --check-leaks"
   },
   "license": "GPLv3"
 }
