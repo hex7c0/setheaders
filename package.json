@@ -1,5 +1,5 @@
 {
-  "version": "0.0.4",
+  "version": "0.0.5",
   "name": "setheaders",
   "description": "boilerplate for res.setHeader, protection from being overridden",
   "keywords": [
@@ -29,7 +29,7 @@
     "supertest": "~0.15"
   },
   "engines": {
-    "node": "^0.10"
+    "node": ">=0.10"
   },
   "scripts": {
     "prepublish": "npm prune",
