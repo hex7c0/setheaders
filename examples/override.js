@@ -20,6 +20,9 @@ http.createServer(function(req, res) {
   setHeader(res, 'ciao', 'pippo');
   setHeader(res, 'ciao', 'pippo2', null, true); // pippo as "ciao" header, because already set
 
+  setHeader.setOverrideHeader(res, 'hello', 'pippo'); // you can use setOverrideHeader as shortcut
+  setHeader.setOverrideHeader(res, 'hello', 'pippo2');
+
   res.writeHead(200, {
     'Content-Type': 'text/plain'
   });

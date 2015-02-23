@@ -108,3 +108,25 @@ function setProctedHeader(res, name, value) {
   return true;
 }
 module.exports.setProctedHeader = setProctedHeader;
+
+/**
+ * set override header on response
+ * 
+ * @function setOverrideHeader
+ * @param {Object} res - response to client
+ * @param {String} name - header's name
+ * @param {String} value - header's value
+ * @return {Boolean}
+ */
+function setOverrideHeader(res, name, value) {
+
+  var isPresent = res._headers && res._headers[name] !== undefined;
+  if (isPresent === true) {
+    return true;
+  }
+
+  res.setHeader(name, value);
+
+  return true;
+}
+module.exports.setOverrideHeader = setOverrideHeader;
