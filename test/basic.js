@@ -32,8 +32,8 @@ describe(
 
         app = http.createServer(function(req, res) {
 
-          assert.equal(setHeader(res, 'ciao', 'pippo',
-            'should set normal header'), true);
+          assert.equal(setHeader(res, 'ciao', 'pippo'), true,
+            'should set normal header');
           assert.equal(res.getHeader('ciao'), 'pippo');
 
           assert.equal(setHeader(res, 'ciao', 'pizza'), true);
@@ -100,14 +100,13 @@ describe(
             assert.equal(setHeader(res, 'ciao', 'pippo'), true);
             assert.equal(res.getHeader('ciao'), 'pippo');
 
-            assert.equal(setHeader(res, 'ciao', 'pizza', null, true,
-              'I cant\'t override this header if present'), true);
+            assert.equal(setHeader(res, 'ciao', 'pizza', null, true), true,
+              'I cant\'t override this header if present');
             assert.equal(res.getHeader('ciao'), 'pippo',
               'should get previous header');
 
-            assert.equal(setHeader(res, 'PippO', 'foo',
-              'should override previous header, because no option is set'),
-              true);
+            assert.equal(setHeader(res, 'PippO', 'foo'), true,
+              'should override previous header, because no option is set');
 
             res.writeHead(200, {
               'Content-Type': 'text/plain'
@@ -151,7 +150,7 @@ describe(
           res._headerSent = false;
           try {
             assert.equal(setHeader(res, 'ciao', 'pippo', null, null, true),
-              false, 'should return Exception because socket is sent');
+              false);
           } catch (e) {
             assert.equal(e.message, 'Can\'t set headers after they are sent.');
           }
