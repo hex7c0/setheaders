@@ -1,6 +1,6 @@
 'use strict';
 /**
- * @file basic test
+ * @file protect test
  * @module setheaders
  * @subpackage test
  * @version 0.0.1
@@ -20,38 +20,35 @@ var request = require('supertest');
 /*
  * test module
  */
-describe('protected', function() {
+describe('protect', function() {
 
   var app;
 
-  describe('protect', function() {
+  before(function(done) {
 
-    before(function(done) {
+    app = http.createServer(function(req, res) {
 
-      app = http.createServer(function(req, res) {
+      assert.equal(setHeader(res, 'ciao', 'pippo', true), true,
+        'should protect this header from being overridden');
+      assert.equal(res.getHeader('ciao'), 'pippo');
 
-        assert.equal(setHeader(res, 'ciao', 'pippo', true), true,
-          'should protect this header from being overridden');
-        assert.equal(res.getHeader('ciao'), 'pippo');
+      setHeader(res, 'ciao', 'pizza');
+      assert.equal(res.getHeader('ciao'), 'pippo',
+        'I can\'t change this header :(');
 
-        setHeader(res, 'ciao', 'pizza');
-        assert.equal(res.getHeader('ciao'), 'pippo',
-          'I can\'t change this header :(');
+      assert.equal(setHeader(res, 'PippO', 'foo'), true);
 
-        assert.equal(setHeader(res, 'PippO', 'foo'), true);
-
-        res.writeHead(200, {
-          'Content-Type': 'text/plain'
-        });
-        res.end();
+      res.writeHead(200, {
+        'Content-Type': 'text/plain'
       });
-      done();
+      res.end();
     });
+    done();
+  });
 
-    it('should return 2 headers', function(done) {
+  it('should return 2 headers', function(done) {
 
-      request(app).get('/').expect('ciao', 'pippo').expect('PippO', 'foo')
-      .expect(200, done);
-    });
+    request(app).get('/').expect('ciao', 'pippo').expect('PippO', 'foo')
+    .expect(200, done);
   });
 });
