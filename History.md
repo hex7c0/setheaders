@@ -1,3 +1,13 @@
+v0.1.0 / 2015-02-23
+==================
+
+  * Change "override" option, from `false` to `true`
+  * Add "writable" (options)
+  * Add setHeader.setProctedHeader shortcut
+  * Add setHeader.setOverrideHeader shortcut
+  * Add setHeader.setWritableHeader shortcut
+  * `coveralls` test
+
 v0.0.5 / 2015-02-04
 ==================
 
