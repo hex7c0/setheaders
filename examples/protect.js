@@ -20,6 +20,9 @@ http.createServer(function(req, res) {
   setHeader(res, 'ciao', 'pippo', true);
   setHeader(res, 'ciao', 'pippo2'); // pippo as "ciao" header, because protected
 
+  setHeader.setProctedHeader(res, 'hello', 'pippo'); // you can use setProctedHeader as shortcut
+  setHeader.setProctedHeader(res, 'hello', 'pippo2');
+
   res.writeHead(200, {
     'Content-Type': 'text/plain'
   });

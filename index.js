@@ -71,3 +71,40 @@ function setHeader(res, name, value, protect, override, writable) {
   return true;
 }
 module.exports = setHeader;
+
+/**
+ * set protected header on response
+ * 
+ * @function setProctedHeader
+ * @param {Object} res - response to client
+ * @param {String} name - header's name
+ * @param {String} value - header's value
+ * @return {Boolean}
+ */
+function setProctedHeader(res, name, value) {
+
+  res.setHeader(name, value);
+
+  var low = name.toLowerCase();
+  var previous = Object.getOwnPropertyDescriptor(res._headers, low);
+
+  if (previous !== undefined && previous.configurable === false) {
+    return false;
+  }
+
+  Object.defineProperty(res._headers, low, {
+    configurable: false,
+    enumerable: true,
+    get: function() { // getter
+
+      return value;
+    },
+    set: function() { // setter
+
+      return; // prevent set error
+    }
+  });
+
+  return true;
+}
+module.exports.setProctedHeader = setProctedHeader;
