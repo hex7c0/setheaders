@@ -46,15 +46,13 @@ function setHeader(res, name, value, protect, override, writable) {
 
   res.setHeader(name, value);
 
-  /**
-   * @deprecated
-   * 
-   * var previous = Object.getOwnPropertyDescriptor(res._headers, low); if (previous !== undefined && previous.configurable === false) { return false; }
-   */
-
   // do you want to lock this header?
   if (protect === true) {
     var low = name.toLowerCase();
+    var previous = Object.getOwnPropertyDescriptor(res._headers, low);
+    if (previous !== undefined && previous.configurable === false) { // already defined
+      return false;
+    }
     Object.defineProperty(res._headers, low, {
       configurable: false,
       enumerable: true,

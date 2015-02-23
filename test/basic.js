@@ -25,6 +25,7 @@ describe(
   function() {
 
     var app;
+
     describe('normal', function() {
 
       before(function(done) {
@@ -66,6 +67,7 @@ describe(
           assert.equal(res.getHeader('ciao'), 'pippo');
 
           setHeader(res, 'ciao', 'pizza');
+          setHeader(res, 'ciao', 'pizza', true);
           assert.equal(res.getHeader('ciao'), 'pippo',
             'I can\'t change this header :(');
 
