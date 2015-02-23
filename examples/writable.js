@@ -25,6 +25,7 @@ http.createServer(function(req, res) {
   res.end('Hello World\n');
 
   setHeader(res, 'ciao', 'pippo2', null, null, true); // doesn't throw Exception
+  setHeader.setWritableHeader(res, 'hello', 'pippo2'); // you can use setWritableHeader as shortcut
 
 }).listen(3000, '127.0.0.1');
 

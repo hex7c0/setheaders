@@ -130,3 +130,25 @@ function setOverrideHeader(res, name, value) {
   return true;
 }
 module.exports.setOverrideHeader = setOverrideHeader;
+
+/**
+ * set writable header on response
+ * 
+ * @function setWritableHeader
+ * @param {Object} res - response to client
+ * @param {String} name - header's name
+ * @param {String} value - header's value
+ * @return {Boolean}
+ */
+function setWritableHeader(res, name, value) {
+
+  var isWritable = res._headerSent === false || res.finished === false;
+  if (isWritable === false) {
+    return false;
+  }
+
+  res.setHeader(name, value);
+
+  return true;
+}
+module.exports.setWritableHeader = setWritableHeader;
