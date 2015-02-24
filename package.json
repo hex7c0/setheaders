@@ -40,7 +40,7 @@
   "scripts": {
     "prepublish": "npm prune",
     "test": "mocha --bail --check-leaks",
-    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly"
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly"
   },
   "license": "GPLv3"
 }
