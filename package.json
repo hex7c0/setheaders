@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "name": "setheaders",
   "description": "boilerplate for res.setHeader, protection from being overridden",
   "keywords": [

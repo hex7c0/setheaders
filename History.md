@@ -1,3 +1,9 @@
+v0.1.1 / 2015-02-25
+==================
+
+  * Fix npm `coverage` dir
+  * Improve shortcut methods
+
 v0.1.0 / 2015-02-23
 ==================
 
