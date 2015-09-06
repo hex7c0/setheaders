@@ -11,13 +11,12 @@
 /*
  * initialize module
  */
-// import
 var setHeader = require('..'); // require('setheaders')
 var http = require('http');
 
 http.createServer(function(req, res) {
 
-  setHeader(res, 'ciao', 'pippo'); // pippo as "ciao" header
+  setHeader(res, 'ciao', 'pippo'); // `pippo` as "ciao" header
 
   res.writeHead(200, {
     'Content-Type': 'text/plain'
