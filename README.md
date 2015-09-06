@@ -22,7 +22,7 @@ git clone git://github.com/hex7c0/setheaders.git
 
 ## API
 
-inside nodejs project
+inside nodejs project, set `pippo` as "X-Foo" header
 ```js
 var setHeader = require('setheaders');
 
