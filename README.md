@@ -38,7 +38,7 @@ var setOverrideHeader = setHeader.setOverrideHeader; // override = true
 var setWritableHeader = setHeader.setWritableHeader; // writable = true
 ```
 
-### setheaders(res, name, value, [protected], [override], [writable])
+### setheaders(res, name, value [, protected [, override [, writable] ] ])
 
 #### options
 
