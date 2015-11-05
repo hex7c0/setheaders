@@ -1,4 +1,4 @@
-# [setheaders](http://supergiovane.tk/#/setheaders)
+# [setheaders](https://github.com/hex7c0/setheaders)
 
 [![NPM version](https://img.shields.io/npm/v/setheaders.svg)](https://www.npmjs.com/package/setheaders)
 [![Linux Status](https://img.shields.io/travis/hex7c0/setheaders.svg?label=linux)](https://travis-ci.org/hex7c0/setheaders)

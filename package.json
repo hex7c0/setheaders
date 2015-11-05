@@ -1,5 +1,5 @@
 {
-  "version": "0.1.4",
+  "version": "0.1.5",
   "name": "setheaders",
   "description": "boilerplate for res.setHeader, protection from being overridden",
   "keywords": [
@@ -7,7 +7,7 @@
     "headers"
   ],
   "preferGlobal": false,
-  "homepage": "http://supergiovane.tk/#/setheaders",
+  "homepage": "https://github.com/hex7c0/setheaders",
   "author": {
     "name": "hex7c0",
     "email": "hex7c0@gmail.com",
