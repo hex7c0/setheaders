@@ -28,8 +28,7 @@ function setHeader(res, name, value, protect, override, writable) {
 
   // check an override
   if (override === true) {
-    var isPresent = res._headers && res._headers[name] !== undefined;
-    if (isPresent === true) {
+    if (res._headers && res._headers[name] !== undefined) {
       return true;
     }
   }
@@ -37,8 +36,7 @@ function setHeader(res, name, value, protect, override, writable) {
 
   // is socket writable?
   if (writable === true) {
-    var isWritable = res._headerSent === false || res.finished === false;
-    if (isWritable === false) {
+    if (res._headerSent && res.finished) {
       return false;
     }
   }
@@ -53,6 +51,7 @@ function setHeader(res, name, value, protect, override, writable) {
     if (previous !== undefined && previous.configurable === false) { // already defined
       return false;
     }
+
     Object.defineProperty(res._headers, low, {
       configurable: false,
       enumerable: true,
@@ -87,24 +86,23 @@ function setProctedHeader(res, name, value) {
 
   var low = name.toLowerCase();
   var previous = Object.getOwnPropertyDescriptor(res._headers, low);
-
-  if (!previous || previous.configurable === true) {
-    Object.defineProperty(res._headers, low, {
-      configurable: false,
-      enumerable: true,
-      get: function() { // getter
-
-        return value;
-      },
-      set: function() { // setter
-
-        return; // prevent set error
-      }
-    });
-    return true;
+  if (previous !== undefined && previous.configurable === false) { // already defined
+    return false;
   }
 
-  return false;
+  Object.defineProperty(res._headers, low, {
+    configurable: false,
+    enumerable: true,
+    get: function() { // getter
+
+      return value;
+    },
+    set: function() { // setter
+
+      return; // prevent set error
+    }
+  });
+  return true;
 }
 module.exports.setProctedHeader = setProctedHeader;
 
@@ -119,10 +117,11 @@ module.exports.setProctedHeader = setProctedHeader;
  */
 function setOverrideHeader(res, name, value) {
 
-  if (!res._headers || res._headers[name] === undefined) {
-    res.setHeader(name, value);
+  if (res._headers && res._headers[name] !== undefined) {
+    return true;
   }
 
+  res.setHeader(name, value);
   return true;
 }
 module.exports.setOverrideHeader = setOverrideHeader;
@@ -138,11 +137,11 @@ module.exports.setOverrideHeader = setOverrideHeader;
  */
 function setWritableHeader(res, name, value) {
 
-  if (res._headerSent === false || res.finished === false) {
-    res.setHeader(name, value);
-    return true;
+  if (res._headerSent && res.finished) {
+    return false;
   }
 
-  return false;
+  res.setHeader(name, value);
+  return true;
 }
 module.exports.setWritableHeader = setWritableHeader;
