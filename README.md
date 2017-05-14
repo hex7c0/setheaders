@@ -53,4 +53,4 @@ var setWritableHeader = setHeader.setWritableHeader; // writable  = true
 
 Take a look at my [examples](examples)
 
-### [License GPLv3](LICENSE)
+### [License Apache2](LICENSE)
