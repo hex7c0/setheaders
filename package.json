@@ -1,10 +1,10 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "name": "setheaders",
   "description": "boilerplate for res.setHeader, protection from being overridden",
   "keywords": [
     "setHeader",
-    "headers"
+    "header"
   ],
   "preferGlobal": false,
   "homepage": "https://github.com/hex7c0/setheaders",
@@ -42,5 +42,5 @@
     "test": "mocha --bail --check-leaks",
     "test-cov": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly"
   },
-  "license": "GPL-3.0"
+  "license": "Apache-2.0"
 }
